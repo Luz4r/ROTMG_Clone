@@ -5,12 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10.0f;
-    private Vector3 rotationValue;
+    public Vector3 rotationValue = new Vector3(0.0f, 0.0f, 1.0f);
 
     // Start is called before the first frame update
     void Start()
     {
-        rotationValue = new Vector3(0.0f, 0.0f, 1.5f);
     }
 
     // Update is called once per frame
@@ -34,9 +33,13 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.eulerAngles += rotationValue;
         }
-        else if(Input.GetKey(KeyCode.E))
+        if(Input.GetKey(KeyCode.E))
         {
             transform.eulerAngles -= rotationValue;
+        }
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            transform.eulerAngles = Vector3.zero;
         }
     }
 }
