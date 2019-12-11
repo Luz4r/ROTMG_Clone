@@ -43,7 +43,7 @@ public class PlayerAbilities : MonoBehaviour
             Vector2 bulletPos = playerPos + dir;
 
             GameObject bullet = Instantiate<GameObject>(bulletPrefab, bulletPos, Quaternion.FromToRotation(Vector2.up, dir));
-            bullet.GetComponent<BulletMovement>().setDir(dir, bulletSpeed);
+            bullet.GetComponent<BulletMovement>().setVelocity(dir, bulletSpeed);
 
             sceneController.AddBullet(bullet, range);
         }

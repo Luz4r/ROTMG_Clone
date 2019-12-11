@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    private Vector2 dir;
-    private float speed;
     private Vector3 velocity;
 
     public Vector3 Velocity { get => velocity; }
@@ -13,9 +11,9 @@ public class BulletMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(dir == null)
+        if(velocity == null)
         {
-            dir = Vector3.zero;
+            velocity = Vector3.zero;
         }
     }
 
@@ -25,7 +23,7 @@ public class BulletMovement : MonoBehaviour
         transform.position += velocity;
     }
 
-    public void setDir(Vector2 dir, float speed)
+    public void setVelocity(Vector2 dir, float speed)
     {
         velocity = dir * speed;
     }
