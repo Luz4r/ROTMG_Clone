@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         HandleMovement();
         HandleRotation();
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
-        transform.Translate(dirX * Time.deltaTime * speed, dirY * Time.deltaTime * speed, 0);
+        transform.Translate(dirX * Time.fixedDeltaTime * speed, dirY * Time.fixedDeltaTime * speed, 0.0f);
     }
 
     private void HandleRotation()

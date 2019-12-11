@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    private Vector3 dir;
+    private Vector2 dir;
+    private float speed;
+    private Vector3 velocity;
+
+    public Vector3 Velocity { get => velocity; }
 
     // Start is called before the first frame update
     void Start()
@@ -16,13 +20,22 @@ public class BulletMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position += dir;
+        transform.position += velocity;
     }
 
-    public void setDir(Vector3 dir)
+    public void setDir(Vector2 dir, float speed)
     {
-        this.dir = dir;
+        velocity = dir * speed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Colliding with enemy");
+            Destroy(gameObject);
+        }
     }
 }
